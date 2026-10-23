@@ -59,5 +59,30 @@ public class ChamadoDTO {
             );
         }
     }
+    
+        public record DetailResponse(
+            String id,
+            String titulo,
+            String descricao,
+            StatusChamado status,
+            String usuario,
+            String tecnico,
+            String solucao,
+            LocalDateTime dataAbertura,
+            LocalDateTime dataResolucao) {
 
+        public static DetailResponse fromEntity(Chamado chamado) {
+            return new DetailResponse(
+                    chamado.getId(),
+                    chamado.getTitulo(),
+                    chamado.getDescricao(),
+                    chamado.getStatus(),
+                    chamado.getUsuario(),
+                    chamado.getTecnico(),
+                    chamado.getSolucao(),
+                    chamado.getCriadoHa(),
+                    chamado.getFechadoHa()
+            );
+        }
+    }
 }    

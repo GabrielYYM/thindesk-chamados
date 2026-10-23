@@ -39,4 +39,16 @@ public class ChamadoController {
         List<ChamadoDTO.ListResponse> chamados = chamadoService.listarPorUsuario(id);
         return ResponseEntity.ok(chamados);
     }
+    //Não utlizado
+    //@GetMapping
+    public List<Chamado> listarChamados() {
+        return chamadoService.listarChamados();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ChamadoDTO.DetailResponse> buscarPorId(@PathVariable String id) {
+        ChamadoDTO.DetailResponse response = chamadoService.buscarPorId(id);
+        return ResponseEntity.ok(response);
+    }
+
 }    
