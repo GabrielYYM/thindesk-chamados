@@ -1,6 +1,6 @@
-# ThinkDesk - Microservico Chamados
+# ThinkDesk - Microsserviço de Chamados
 
-API REST desenvolvida em **Java** com **Spring Boot 3** e **MongoDB** para gerenciamento do ciclo de vida de chamados técnicos .
+Microsserviço especializado e desacoplado da plataforma **ThinkDesk**, desenvolvido como uma API REST em **Java (Spring Boot 3)** e **MongoDB**. É responsável exclusivamente pelo domínio e gerenciamento do ciclo de vida dos chamados técnicos.
 
 ---
 
