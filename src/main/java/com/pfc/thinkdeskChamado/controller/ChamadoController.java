@@ -35,7 +35,7 @@ public class ChamadoController {
     }
 
     @GetMapping("/usuario/{id}")
-    public ResponseEntity<List<ChamadoDTO.ListResponse>> listarPorUsuario(@PathVariable String id) {
+    public ResponseEntity<List<ChamadoDTO.ListResponse>> listarPorUsuario(@PathVariable("id") String id) {
         List<ChamadoDTO.ListResponse> chamados = chamadoService.listarPorUsuario(id);
         return ResponseEntity.ok(chamados);
     }
@@ -46,14 +46,14 @@ public class ChamadoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ChamadoDTO.DetailResponse> buscarPorId(@PathVariable String id) {
+    public ResponseEntity<ChamadoDTO.DetailResponse> buscarPorId(@PathVariable("id") String id) {
         ChamadoDTO.DetailResponse response = chamadoService.buscarPorId(id);
         return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{id}/resolver")
     public ResponseEntity<ChamadoDTO.DetailResponse> resolverChamado(
-        @PathVariable String id,
+        @PathVariable("id") String id,
         @Valid @RequestBody ChamadoDTO.ResolverRequest request,
         Principal principal) {
 
