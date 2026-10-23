@@ -33,4 +33,10 @@ public class ChamadoController {
     ChamadoDTO.OpenResponse response = chamadoService.criarChamado(request, principal.getName());
     return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @GetMapping("/usuario/{id}")
+    public ResponseEntity<List<ChamadoDTO.ListResponse>> listarPorUsuario(@PathVariable String id) {
+        List<ChamadoDTO.ListResponse> chamados = chamadoService.listarPorUsuario(id);
+        return ResponseEntity.ok(chamados);
+    }
 }    

@@ -37,4 +37,27 @@ public class ChamadoDTO {
             );
         }
     }
+
+        public record ListResponse(
+            String id,
+            String titulo,
+            StatusChamado status,
+            String usuario,
+            String tecnico,
+            LocalDateTime dataAbertura,
+            LocalDateTime dataResolucao) {
+
+        public static ListResponse fromEntity(Chamado chamado) {
+            return new ListResponse(
+                    chamado.getId(),
+                    chamado.getTitulo(),
+                    chamado.getStatus(),
+                    chamado.getUsuario(),
+                    chamado.getTecnico(),
+                    chamado.getCriadoHa(),
+                    chamado.getFechadoHa()
+            );
+        }
+    }
+
 }    

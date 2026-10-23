@@ -32,4 +32,11 @@ public class ChamadoService {
         Chamado salvo = chamadoRepository.save(chamado);
         return ChamadoDTO.OpenResponse.fromEntity(salvo);
     }
+
+    public List<ChamadoDTO.ListResponse> listarPorUsuario(String usuario) {
+        return chamadoRepository.findByUsuario(usuario)
+            .stream()
+            .map(ChamadoDTO.ListResponse::fromEntity)
+            .toList();
+    }
 }    
