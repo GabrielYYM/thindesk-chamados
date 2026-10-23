@@ -51,4 +51,18 @@ public class ChamadoController {
         return ResponseEntity.ok(response);
     }
 
+    @PutMapping("/{id}/resolver")
+    public ResponseEntity<ChamadoDTO.DetailResponse> resolverChamado(
+        @PathVariable String id,
+        @Valid @RequestBody ChamadoDTO.ResolverRequest request,
+        Principal principal) {
+
+    if (principal == null) {
+        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Usuário não autenticado");
+    }
+
+    ChamadoDTO.DetailResponse response = chamadoService.resolverChamado(id, request, principal.getName());
+    return ResponseEntity.ok(response);
+}
+
 }    

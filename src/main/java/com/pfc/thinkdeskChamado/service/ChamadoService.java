@@ -62,4 +62,19 @@ public class ChamadoService {
                 })
                 .orElseThrow(() -> new RuntimeException("Chamado não encontrado com id: " + id));
     }
+
+    public ChamadoDTO.DetailResponse resolverChamado(String id, ChamadoDTO.ResolverRequest request, String tecnico) {
+        Chamado chamado = chamadoRepository.findById(id)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Chamado inexistente"));
+        if (chamado.getStatus() == StatusChamado.RESOLVIDO) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Chamado já resolvido");
+        }
+        chamado.setSolucao(request.solucao());
+        chamado.setStatus(StatusChamado.RESOLVIDO);
+        chamado.setFechadoHa(LocalDateTime.now());
+        chamado.setTecnico(tecnico);
+        
+        Chamado salvo = chamadoRepository.save(chamado);
+        return ChamadoDTO.DetailResponse.fromEntity(salvo);
+    }
 }    

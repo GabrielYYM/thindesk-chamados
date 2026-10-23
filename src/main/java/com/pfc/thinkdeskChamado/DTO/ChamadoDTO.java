@@ -15,8 +15,13 @@ public class ChamadoDTO {
             @NotBlank(message = "Preencha o campo descrição")
             @Size (min = 10, max = 400, message = "A descrição deve ter entre 10 a 400 caracteres" )
             String descricao
-    ) {
-    }
+    ) {}
+
+    public record ResolverRequest(
+        @NotBlank(message = "Preencha o campo solução")
+        @Size(min = 5, max = 500, message = "A solução deve ter entre 5 e 500 caracteres")
+        String solucao
+    ) {}
 
     public record OpenResponse(
             String id,
@@ -59,7 +64,7 @@ public class ChamadoDTO {
             );
         }
     }
-    
+
         public record DetailResponse(
             String id,
             String titulo,
